@@ -1,0 +1,21 @@
+.list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    color: #F0D5C6;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 20px;
+    a {
+        color: #F0D5C6;
+        font-size: 16px;
+        line-height: 20px;
+        &:hover {
+            color: #b6866c;
+        }
+    }
+    
+}
