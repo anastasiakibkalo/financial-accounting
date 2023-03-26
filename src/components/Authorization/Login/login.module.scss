@@ -1,0 +1,39 @@
+@import "../../../styles/var";
+
+.container {
+  padding-top: 20px;
+}
+
+.title {
+  text-align: center;
+  color: $cream;
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.form {
+  margin-top: 20px;
+}
+
+.input {
+  margin-bottom: 15px;
+}
+
+.button {
+  max-width: 200px;
+  width: 100%;
+  margin: 30px auto 0;
+}
+
+.forgotPassword {
+  margin-top: 5px;
+  color: $cream;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: right;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  &:hover {
+    color: $darkCream;
+  }
+}

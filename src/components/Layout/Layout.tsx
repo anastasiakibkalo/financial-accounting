@@ -1,7 +1,8 @@
-import React, {ReactNode, FC} from "react";
+import React, {ReactNode, FC, useState} from "react";
 import Head from 'next/head';
 // import Header from "components/Header/Header";
 import Menu from "components/Menu/Menu";
+import Authorization from "components/Authorization/Authorization";
 
 import styles from './layout.module.scss';
 
@@ -11,6 +12,9 @@ interface IProps {
 }
 
 const Layout: FC<IProps> = ({title = 'Страница', children}) => {
+
+    const [isUserAuthorized, setIsUserAuthorized] = useState(false)
+
     return (
         <div className={styles['app']}>
             <Head>
@@ -18,12 +22,19 @@ const Layout: FC<IProps> = ({title = 'Страница', children}) => {
             </Head>
             {/* <Header/> */}
             <div className={styles.container}>
-                <div className={styles.menu}>
-                    <Menu/>
-                </div>
-                <div className={styles.content}>
-                    {children}
-                </div>
+                {!isUserAuthorized ? (
+                    <Authorization/>
+                ) : (
+                    <>
+                        <div className={styles.menu}>
+                            <Menu/>
+                        </div>
+                        <div className={styles.content}>
+                            {children}
+                        </div>
+                    </>
+                )}
+                
             </div>
         </div>
     )

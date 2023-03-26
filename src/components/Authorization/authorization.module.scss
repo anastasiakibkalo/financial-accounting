@@ -1,0 +1,53 @@
+@import '../../styles/var';
+
+
+.container {
+    background: $darkGray;
+    margin: auto;
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tab {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    border: 2px solid $darkCream;
+    background: $darkCream;
+    padding: 10px 10px 13px;
+    cursor: pointer;
+    opacity: .4;
+    transition: all .25s ease-in;
+    &:first-child {
+        border-radius: 15px 0 0 15px;
+        border-right-width: 1px;
+    }
+    &:last-child {
+        border-radius: 0 15px 15px 0;
+        border-left-width: 1px;
+    }
+    p {
+        font-size: 15px;
+        line-height: 20px;
+        color: $darkGray;
+        transition: all .25s ease-in;
+    }
+    &:hover {
+        p {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.active {
+    opacity: 1;
+    pointer-events: none;
+}

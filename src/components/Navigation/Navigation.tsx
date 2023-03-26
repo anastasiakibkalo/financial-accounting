@@ -1,26 +1,55 @@
-import React from "react";
+import React, {useMemo} from "react";
 import Link from "next/link";
+import { useRouter } from 'next/router';
+import cn from 'classnames'
 
 import styles from "./navigation.module.scss"
 
 const Navigation = () => {
+
+    const router = useRouter();
+
+    const NavigationList = useMemo(
+        () => [
+            {
+                id: 0,
+                title: "Головна",
+                link: "/"
+            },
+            {
+                id: 1,
+                title: "Огляд",
+                link: "/review"
+            },
+            {
+                id: 2,
+                title: "Додати",
+                link: "/"
+            },
+            {
+                id: 3,
+                title: "Допомога",
+                link: "/"
+            },
+            {
+                id: 4,
+                title: "Налаштування",
+                link: "/"
+            },
+        ], []
+    )
+
     return (
         <ul className={styles.list}>
-            <li className={styles.item}>
-                <Link href="/">Главная</Link>
-            </li>
-            <li className={styles.item}>
-                <Link href="/review">Обзор</Link>
-            </li>
-            <li className={styles.item}>
-                <Link href="/">Добавить</Link>
-            </li>
-            <li className={styles.item}>
-                <Link href="/">Помощь</Link>
-            </li>
-            <li className={styles.item}>
-                <Link href="/">Настройки</Link>
-            </li>
+            {NavigationList.map(({id, title, link}) => {
+                return (
+                    <li key={id} className={cn(router.pathname == link && [styles.active], [styles.item])}>
+                        <Link href={link}>
+                            {title}
+                        </Link>
+                    </li>
+                )
+            })}
         </ul>
     )
 }

@@ -9,15 +9,27 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^7.0.0",
     "@types/node": "18.15.7",
     "@types/react": "18.0.29",
     "@types/react-dom": "18.0.11",
+    "babel-loader": "^9.1.2",
+    "classnames": "^2.3.2",
+    "dotenv": "^16.0.3",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
+    "final-form": "^4.20.9",
     "next": "13.2.4",
+    "next-compose-plugins": "^2.2.1",
+    "next-fonts": "^1.5.1",
+    "next-images": "^1.8.4",
+    "path": "^0.12.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-final-form": "^6.5.9",
     "sass": "^1.60.0",
-    "typescript": "5.0.2"
+    "typescript": "5.0.2",
+    "webpack": "^5.76.3",
+    "yup": "^1.0.2"
   }
 }

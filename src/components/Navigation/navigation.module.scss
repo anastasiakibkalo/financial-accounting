@@ -1,3 +1,5 @@
+@import '../../styles/var';
+
 .list {
     display: flex;
     justify-content: center;
@@ -5,17 +7,23 @@
 }
 
 .item {
-    color: #F0D5C6;
+    color: $cream;
     font-size: 16px;
     line-height: 20px;
     margin: 0 20px;
     a {
-        color: #F0D5C6;
+        color: $cream;
         font-size: 16px;
         line-height: 20px;
         &:hover {
-            color: #b6866c;
+            color: $darkCream;
         }
     }
     
+}
+.active {
+    a {
+        color: rgba($darkCream, .6);
+        pointer-events: none;
+    }
 }

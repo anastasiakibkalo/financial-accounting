@@ -1,11 +1,36 @@
-@import './reset.css';
+@import "./reset.css";
+@import "./_var.scss";
 
 body {
-  background: #F0D5C6;
+  background: $cream;
   font-family: "Noto Sans", sans-serif;
 }
 
 a {
-  transition: all .25s ease-in;
+  transition: all 0.25s ease-in;
   text-decoration: none;
+}
+
+.error {
+  font-size: 12px;
+  line-height: 15px;
+  color: $red;
+}
+
+.button {
+  width: 100%;
+  background: $darkRed;
+  color: $cream;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  line-height: 20px;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  transition: all 0.25s ease-in;
+  &:hover {
+    background: $red;
+  }
 }
