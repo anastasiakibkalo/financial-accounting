@@ -3,7 +3,7 @@ import { Form, Field } from "react-final-form";
 import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
 import FormInput from "components/FormElements/FormInput/FormInput";
-import cn from "classnames";
+import Socials from "../Socials/Socials";
 
 import styles from "./registration.module.scss";
 
@@ -83,6 +83,7 @@ const Registration = () => {
           </form>
         )}
       ></Form>
+      <Socials />
     </div>
   );
 };
