@@ -1,12 +1,12 @@
-import type { NextPage } from 'next';
+import type { NextPage } from "next";
 
-import Layout from '../components/Layout/Layout';
+import Layout from "../components/Layout/Layout";
+import ReviewInfo from "components/ReviewInfo/ReviewInfo";
 
 const Review: NextPage = () => {
-
   return (
     <Layout title="Review">
-        Review
+      <ReviewInfo />
     </Layout>
   );
 };
