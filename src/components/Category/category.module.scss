@@ -1,0 +1,30 @@
+@import "../../styles/var";
+
+.container {
+  max-width: 500px;
+  width: 100%;
+  margin: 30px auto 0;
+  position: relative;
+  padding-bottom: 40px;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    height: 2px;
+    border-radius: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $darkGray;
+  }
+}
+
+.items {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.item {
+  width: 25%;
+}
