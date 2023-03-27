@@ -1,0 +1,43 @@
+@import "../../styles/var";
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba($darkGray, 0.9);
+  z-index: 10;
+  display: flex;
+}
+
+.block {
+  background: $cream;
+  margin: auto;
+  max-width: 500px;
+  width: 100%;
+  padding: 20px 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  svg {
+    transform: rotate(45deg);
+  }
+  &:hover {
+    path {
+      fill: $darkGray;
+      stroke: $darkGray;
+    }
+  }
+}

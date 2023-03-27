@@ -15,6 +15,7 @@ interface IProps {
   required?: boolean;
   onClick?: () => void;
   readonly?: boolean;
+  number?: boolean;
 }
 
 const FormInput: React.FC<IProps> = ({
@@ -23,13 +24,15 @@ const FormInput: React.FC<IProps> = ({
   meta,
   placeholder,
   serverErrors,
+  extClassName,
   onClick,
   readonly = false,
+  number,
 }) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
 
   return (
-    <div className={styles.container}>
+    <div className={cn(styles.container, extClassName && styles[extClassName])}>
       <label htmlFor={placeholder} className={styles.label}>
         <p className={styles.title}>{label}</p>
         <div className={styles.block}>
@@ -49,6 +52,14 @@ const FormInput: React.FC<IProps> = ({
             onClick={onClick}
             type={isShowPassword ? "text" : input.type}
             readOnly={readonly}
+            onKeyPress={
+              number &&
+              ((event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              })
+            }
           />
           {input.type === "password" && (
             <div

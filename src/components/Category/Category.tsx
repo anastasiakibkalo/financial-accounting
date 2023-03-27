@@ -1,8 +1,10 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Swiper, SwiperSlide, SwiperProps } from "swiper/react";
 import { Pagination } from "swiper";
 import CategoryItem from "components/CategoryItem/CategoryItem";
 import SliderPagination from "components/SliderControllers/Pagination/Pagination";
+import Modal from "components/Modal/Modal";
+import AddCategory from "components/AddCategory/AddCategory";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -16,34 +18,36 @@ import GiftIcon from "images/icons/gift.svg";
 import PlusIcon from "images/icons/plus.svg";
 
 const Category = () => {
+  const [isOpenAddCategory, setIsOpenAddCategory] = useState(false);
+
   const IncomeList = useMemo(
     () => [
       {
         id: 0,
         title: "Зарплата",
         icon: <WalletIcon />,
-        sum: 100,
+        budget: 100000,
         currency: "₴",
       },
       {
         id: 1,
         title: "Подарунки",
         icon: <GiftIcon />,
-        sum: 0,
+        budget: 0,
         currency: "₴",
       },
       {
         id: 2,
         title: "Інше",
         icon: <BacketIcon />,
-        sum: 309.54,
+        budget: 309.54,
         currency: "₴",
       },
       {
         id: 3,
         title: "Кешбек",
         icon: <PigIcon />,
-        sum: 309.54,
+        budget: 309.54,
         currency: "₴",
       },
     ],
@@ -66,23 +70,33 @@ const Category = () => {
   return (
     <div className={styles.container}>
       <Swiper {...(sliderParams as SwiperProps)}>
-        {IncomeList.map(({ id, title, icon, sum, currency }) => {
+        {IncomeList.map(({ id, title, icon, budget, currency }) => {
           return (
             <SwiperSlide key={id}>
               <CategoryItem
                 title={title}
                 icon={icon}
-                sum={sum}
+                budget={budget}
                 currency={currency}
               />
             </SwiperSlide>
           );
         })}
         <SwiperSlide>
-          <CategoryItem title="Додати" icon={<PlusIcon />} addCategory={true} />
+          <CategoryItem
+            title="Додати"
+            icon={<PlusIcon />}
+            addCategory={true}
+            setIsOpenAddCategory={setIsOpenAddCategory}
+          />
         </SwiperSlide>
       </Swiper>
       <SliderPagination extClassName="category-pagination" />
+      {isOpenAddCategory && (
+        <Modal closeModal={setIsOpenAddCategory}>
+          <AddCategory closeModal={setIsOpenAddCategory} />
+        </Modal>
+      )}
     </div>
   );
 };

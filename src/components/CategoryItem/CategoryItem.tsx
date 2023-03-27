@@ -5,20 +5,22 @@ import cn from "classnames";
 interface IProps {
   title: string;
   icon: any;
-  sum?: number;
+  budget?: number;
   currency?: string;
   addCategory?: boolean;
+  setIsOpenAddCategory?: (bool: boolean) => void;
 }
 
 const CategoryItem: FC<IProps> = ({
   title,
   icon,
-  sum,
+  budget,
   currency,
   addCategory,
+  setIsOpenAddCategory,
 }) => {
-  const convertSum = (sum) => {
-    let num = sum.toFixed(2);
+  const convertbudget = (budget) => {
+    let num = budget.toFixed(2);
     let re = /(?=\B(?:\d{3})+(?!\d))/g;
     let result = num.toString().replace(re, " ").replace(".", ",");
     return result;
@@ -27,10 +29,15 @@ const CategoryItem: FC<IProps> = ({
   return (
     <div className={cn(styles.container, addCategory && [styles.addCategory])}>
       <div className={styles.title}>{title}</div>
-      <div className={styles.icon}>{icon}</div>
-      {(sum || sum == 0) && (
-        <div className={styles.sum}>
-          {convertSum(sum)} {currency}
+      <div
+        className={styles.icon}
+        onClick={addCategory && (() => setIsOpenAddCategory(true))}
+      >
+        {icon}
+      </div>
+      {(budget || budget == 0) && (
+        <div className={styles.budget}>
+          {convertbudget(budget)} {currency}
         </div>
       )}
     </div>

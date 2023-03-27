@@ -1,0 +1,42 @@
+@import "../../styles/var";
+
+.title {
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+}
+
+.button {
+  max-width: 200px;
+  width: 100%;
+  margin: 30px auto 0;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.addIcon {
+  min-width: 35px;
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  border-radius: 50%;
+  border: 2px dashed $darkGray;
+  margin-bottom: 18px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.selected {
+  border: 2px solid $darkGray;
+  background: $darkGray;
+}

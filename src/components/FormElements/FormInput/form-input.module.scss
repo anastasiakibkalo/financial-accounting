@@ -1,5 +1,11 @@
 @import "../../../styles/var";
 
+.label {
+  position: relative;
+  padding-bottom: 15px;
+  display: block;
+}
+
 .title {
   font-size: 15px;
   line-height: 20px;
@@ -43,5 +49,15 @@
   svg {
     width: 100%;
     height: 100%;
+  }
+}
+
+.dark {
+  .title {
+    color: $darkGray;
+  }
+  .input {
+    background: rgba($darkGray, 7);
+    color: $cream;
   }
 }
