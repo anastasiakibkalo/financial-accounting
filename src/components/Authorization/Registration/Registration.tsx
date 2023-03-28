@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { validateForm } from "../../../utils/validateForm";
 import FormInput from "components/FormElements/FormInput/FormInput";
 import Socials from "../Socials/Socials";
+import axios from "../../../axios";
 
 import styles from "./registration.module.scss";
 
@@ -14,6 +15,7 @@ const Registration = () => {
     email: yup.string().required(`Введіть електрону пошту`),
     password: yup
       .string()
+      .min(5, `Пароль повинен бути більше 5 символів`)
       .required(`Введіть пароль`)
       .oneOf([yup.ref("passwordConfirmation"), null], "Пароль не збігається"),
     passwordConfirmation: yup
@@ -24,9 +26,11 @@ const Registration = () => {
   const validate = validateForm(validationSchema);
 
   const onSubmit = useCallback((data, form) => {
-    console.log(data);
+    const { passwordConfirmation, ...userData } = data;
+    axios.post("http://192.168.88.239:4444/auth/register", userData);
   }, []);
 
+  console.log(axios);
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Реєстрація</h2>
