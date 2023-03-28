@@ -1,29 +1,28 @@
-@import '../../styles/var';
+@import "../../styles/var";
 
 .list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .item {
-    color: $cream;
+  color: $cream;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0 20px;
+  a {
+    color: rgba($darkCream, 0.6);
     font-size: 16px;
     line-height: 20px;
-    margin: 0 20px;
-    a {
-        color: $cream;
-        font-size: 16px;
-        line-height: 20px;
-        &:hover {
-            color: $darkCream;
-        }
+    &:hover {
+      color: $darkCream;
     }
-    
+  }
 }
 .active {
-    a {
-        color: rgba($darkCream, .6);
-        pointer-events: none;
-    }
+  a {
+    color: $cream;
+    pointer-events: none;
+  }
 }

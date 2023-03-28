@@ -8,7 +8,9 @@ const Review: NextPage = () => {
   return (
     <Layout title="Review">
       <ReviewInfo />
-      <Category />
+      <Category type="income" />
+      <Category type="balance" />
+      <Category type="expenses" />
     </Layout>
   );
 };
