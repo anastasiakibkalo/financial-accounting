@@ -11,6 +11,7 @@
   line-height: 20px;
   color: $cream;
   margin-bottom: 10px;
+  transition: all 0.25s ease-in;
 }
 
 .block {
@@ -26,6 +27,7 @@
   line-height: 20px;
   padding: 8px 8px;
   border-radius: 5px;
+  transition: all 0.25s ease-in;
 }
 
 .errorInput {

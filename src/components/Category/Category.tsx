@@ -1,6 +1,7 @@
 import React, { useMemo, useState, FC, useEffect } from "react";
 import Modal from "components/Modal/Modal";
 import AddCategory from "components/AddCategory/AddCategory";
+import AddAccount from "components/AddAccount/AddAccount";
 import Slider from "./Slider/Slider";
 
 import { IncomeList, BalanceList, ExpensesList } from "./config";
@@ -35,7 +36,15 @@ const Category: FC<IProp> = ({ type }) => {
       />
       {isOpenAddCategory && (
         <Modal closeModal={setIsOpenAddCategory}>
-          <AddCategory closeModal={setIsOpenAddCategory} />
+          {type === "income" && (
+            <AddCategory closeModal={setIsOpenAddCategory} />
+          )}
+          {type === "balance" && (
+            <AddAccount closeModal={setIsOpenAddCategory} />
+          )}
+          {type === "expenses" && (
+            <AddCategory closeModal={setIsOpenAddCategory} />
+          )}
         </Modal>
       )}
     </div>

@@ -1,0 +1,40 @@
+@import "../../../styles/var";
+
+.block {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background: $darkGray;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  p {
+    color: $cream;
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+
+.icon {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $darkGray;
+  padding: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  path {
+    fill: $cream;
+  }
+}
+
+.button {
+  max-width: 200px;
+  width: 100%;
+  margin: 20px auto 0;
+}

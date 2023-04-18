@@ -1,0 +1,96 @@
+@import "../../styles/var";
+
+.title {
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+}
+
+.button {
+  max-width: 200px;
+  width: 100%;
+  margin: 30px auto 0;
+}
+.card {
+  background: red;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  transition: all 0.25s ease-in;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.addIcon {
+  min-width: 35px;
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  border-radius: 50%;
+  border: 2px dashed $darkGray;
+  margin-bottom: 18px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  &:not(.selected) {
+    background: transparent !important;
+  }
+}
+
+.selected {
+  border: 2px solid $darkGray;
+  background: $darkGray;
+}
+
+.currency {
+  min-width: 35px;
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  padding-bottom: 9px;
+  border-radius: 50%;
+  background: $darkGray;
+  margin-bottom: 18px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  span {
+    color: $cream;
+    font-size: 20px;
+    line-height: 25px;
+    display: inline-block;
+  }
+}
+
+.addCurrency {
+  path {
+    fill: $cream;
+  }
+  .icon {
+    width: 16px;
+  }
+}
+
+.dark {
+  path {
+    fill: #353535;
+  }
+}
+
+.decor {
+  margin-top: 20px;
+}

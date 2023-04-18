@@ -9,6 +9,8 @@ interface IProps {
   placeholder: string;
   serverErrors?: string;
   extClassName?: string;
+  secondaryColor?: string;
+  textColor?: string;
   input: any;
   label?: string;
   meta: any;
@@ -25,6 +27,8 @@ const FormInput: React.FC<IProps> = ({
   placeholder,
   serverErrors,
   extClassName,
+  secondaryColor,
+  textColor,
   onClick,
   readonly = false,
   number,
@@ -34,7 +38,16 @@ const FormInput: React.FC<IProps> = ({
   return (
     <div className={cn(styles.container, extClassName && styles[extClassName])}>
       <label htmlFor={placeholder} className={styles.label}>
-        <p className={styles.title}>{label}</p>
+        <p
+          className={styles.title}
+          style={
+            secondaryColor && {
+              color: textColor,
+            }
+          }
+        >
+          {label}
+        </p>
         <div className={styles.block}>
           <input
             {...input}
@@ -47,6 +60,13 @@ const FormInput: React.FC<IProps> = ({
               },
               input.type === "password" && [styles.password]
             )}
+            style={
+              secondaryColor && {
+                background: secondaryColor,
+                color: textColor,
+                borderColor: textColor,
+              }
+            }
             id={placeholder}
             placeholder={placeholder}
             onClick={onClick}

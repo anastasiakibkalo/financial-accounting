@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const Layout: FC<IProps> = ({ title = "Страница", children }) => {
-  const [isUserAuthorized, setIsUserAuthorized] = useState(false);
+  const [isUserAuthorized, setIsUserAuthorized] = useState(true);
 
   return (
     <div className={styles["app"]}>

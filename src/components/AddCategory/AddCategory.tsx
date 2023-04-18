@@ -15,7 +15,7 @@ interface IProps {
 
 const AddCategory: FC<IProps> = ({ closeModal }) => {
   const [isOpenIconsBlock, setIsOpenIconsBlock] = useState(false);
-  const [isSelectedIcon, setIsSelectedIcon] = useState();
+  const [isSelectedIcon, setIsSelectedIcon] = useState(null);
 
   const validationSchema = yup.object().shape({
     name: yup.string().required(`Введіть назву категорії`),
@@ -55,11 +55,11 @@ const AddCategory: FC<IProps> = ({ closeModal }) => {
                   <div
                     className={cn(
                       styles.addIcon,
-                      isSelectedIcon && [styles.selected]
+                      isSelectedIcon !== null && [styles.selected]
                     )}
                     onClick={() => setIsOpenIconsBlock(true)}
                   >
-                    {isSelectedIcon &&
+                    {isSelectedIcon !== null &&
                       IconsList.map(({ id, icon }) => {
                         return (
                           id === isSelectedIcon && <span key={id}>{icon}</span>
