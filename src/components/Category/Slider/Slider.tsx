@@ -15,16 +15,17 @@ import PlusIcon from "images/icons/plus.svg";
 interface IProps {
   list: any;
   setIsOpenAddCategory: (bool: boolean) => void;
+  type: string;
 }
 
-const Slider: FC<IProps> = ({ list, setIsOpenAddCategory }) => {
+const Slider: FC<IProps> = ({ list, setIsOpenAddCategory, type }) => {
   const sliderParams = useMemo(
     () => ({
       slidesPerView: 4,
       className: "category-swiper",
       modules: [Pagination],
       pagination: {
-        el: ".category-pagination",
+        el: `.category-pagination.${type}`,
         clickable: true,
       },
     }),
@@ -55,7 +56,7 @@ const Slider: FC<IProps> = ({ list, setIsOpenAddCategory }) => {
           />
         </SwiperSlide>
       </Swiper>
-      <SliderPagination extClassName="category-pagination" />
+      <SliderPagination extClassName={`category-pagination ${type}`} />
     </>
   );
 };

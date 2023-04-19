@@ -33,6 +33,7 @@ const Category: FC<IProp> = ({ type }) => {
       <Slider
         list={isAcceptingList}
         setIsOpenAddCategory={setIsOpenAddCategory}
+        type={type}
       />
       {isOpenAddCategory && (
         <Modal closeModal={setIsOpenAddCategory}>
