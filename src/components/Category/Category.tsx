@@ -37,13 +37,19 @@ const Category: FC<IProp> = ({ type }) => {
       {isOpenAddCategory && (
         <Modal closeModal={setIsOpenAddCategory}>
           {type === "income" && (
-            <AddCategory closeModal={setIsOpenAddCategory} />
+            <AddCategory
+              category="Категорія доходу"
+              closeModal={setIsOpenAddCategory}
+            />
           )}
           {type === "balance" && (
             <AddAccount closeModal={setIsOpenAddCategory} />
           )}
           {type === "expenses" && (
-            <AddCategory closeModal={setIsOpenAddCategory} />
+            <AddCategory
+              category="Категорія витрат"
+              closeModal={setIsOpenAddCategory}
+            />
           )}
         </Modal>
       )}

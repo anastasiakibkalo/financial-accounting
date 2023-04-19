@@ -10,19 +10,17 @@ import cn from "classnames";
 import styles from "./addCategory.module.scss";
 
 interface IProps {
+  category: string;
   closeModal: (bool: boolean) => void;
 }
 
-const AddCategory: FC<IProps> = ({ closeModal }) => {
+const AddCategory: FC<IProps> = ({ category, closeModal }) => {
   const [isOpenIconsBlock, setIsOpenIconsBlock] = useState(false);
   const [isSelectedIcon, setIsSelectedIcon] = useState(null);
 
   const validationSchema = yup.object().shape({
     name: yup.string().required(`Введіть назву категорії`),
-    budget: yup
-      .number()
-      .positive("Не можна вводити негативне число")
-      .required(`Введіть бюджет`),
+    budget: yup.number().typeError(`Введіть цифри`),
   });
 
   const validate = validateForm(validationSchema);
@@ -46,9 +44,10 @@ const AddCategory: FC<IProps> = ({ closeModal }) => {
                   <div className={styles.input}>
                     <Field
                       name="name"
-                      label={"Категорія доходу"}
+                      label={category}
                       type="text"
                       extClassName="dark"
+                      s
                       component={FormInput}
                     />
                   </div>

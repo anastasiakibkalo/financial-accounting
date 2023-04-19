@@ -10,14 +10,24 @@
 .icon {
   width: 40px;
   height: 40px;
+  border: 2px solid transparent;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 8px;
   background: $darkGray;
   path {
     stroke: $cream;
+  }
+  &.available {
+    border-color: rgb(0, 134, 0);
+  }
+  &.dangerous {
+    border-color: rgb(175, 2, 2);
+  }
+  &.warning {
+    border-color: rgb(223, 141, 0);
   }
 }
 
@@ -28,9 +38,25 @@
   margin-bottom: 3px;
 }
 
-.budget {
+.amount {
   font-size: 15px;
   line-height: 20px;
+  text-align: center;
+  margin-top: 3px;
+  &.available {
+    color: rgb(0, 134, 0);
+  }
+  &.dangerous {
+    color: rgb(175, 2, 2);
+  }
+  &.warning {
+    color: rgb(223, 141, 0);
+  }
+}
+
+.budget {
+  font-size: 12px;
+  line-height: 15px;
   text-align: center;
   margin-top: 3px;
 }

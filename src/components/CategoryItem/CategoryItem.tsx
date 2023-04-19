@@ -1,10 +1,12 @@
-import React, { FC } from "react";
+import React, { FC, useState, useEffect } from "react";
 import styles from "./categoryItem.module.scss";
 import cn from "classnames";
+import classNames from "classnames";
 
 interface IProps {
   title: string;
   icon: any;
+  amount?: number;
   budget?: number;
   currency?: string;
   addCategory?: boolean;
@@ -14,32 +16,57 @@ interface IProps {
 const CategoryItem: FC<IProps> = ({
   title,
   icon,
+  amount,
   budget,
   currency,
   addCategory,
   setIsOpenAddCategory,
 }) => {
-  const convertbudget = (budget) => {
-    let num = budget.toFixed(2);
+  const [isAmountStatus, setIsAmountStatus] = useState("available");
+
+  const convertAmount = (amount) => {
+    let num = amount.toFixed(2);
     let re = /(?=\B(?:\d{3})+(?!\d))/g;
     let result = num.toString().replace(re, " ").replace(".", ",");
     return result;
   };
+  const convertBudget = (budget) => {
+    let re = /(?=\B(?:\d{3})+(?!\d))/g;
+    let result = budget.toString().replace(re, " ").replace(".", ",");
+    return result;
+  };
+
+  useEffect(() => {
+    if (budget) {
+      const percent = (amount / budget) * 100;
+      if (budget < amount) {
+        setIsAmountStatus("dangerous");
+      }
+      if (percent > 95) {
+        setIsAmountStatus("dangerous");
+      } else if (percent > 55 && percent < 96) {
+        setIsAmountStatus("warning");
+      } else {
+        setIsAmountStatus("available");
+      }
+    }
+  }, [amount]);
 
   return (
     <div className={cn(styles.container, addCategory && [styles.addCategory])}>
       <div className={styles.title}>{title}</div>
       <div
-        className={styles.icon}
+        className={cn(styles.icon, budget && styles[isAmountStatus])}
         onClick={addCategory && (() => setIsOpenAddCategory(true))}
       >
         {icon}
       </div>
-      {(budget || budget == 0) && (
-        <div className={styles.budget}>
-          {convertbudget(budget)} {currency}
+      {(amount || amount == 0) && (
+        <div className={cn(styles.amount, budget && styles[isAmountStatus])}>
+          {convertAmount(amount)} {currency}
         </div>
       )}
+      {budget && <div className={styles.budget}>{convertBudget(budget)}</div>}
     </div>
   );
 };

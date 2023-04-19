@@ -72,14 +72,6 @@ const FormInput: React.FC<IProps> = ({
             onClick={onClick}
             type={isShowPassword ? "text" : input.type}
             readOnly={readonly}
-            onKeyPress={
-              number &&
-              ((event) => {
-                if (!/[0-9]/.test(event.key)) {
-                  event.preventDefault();
-                }
-              })
-            }
           />
           {input.type === "password" && (
             <div

@@ -33,14 +33,15 @@ const Slider: FC<IProps> = ({ list, setIsOpenAddCategory }) => {
   return (
     <>
       <Swiper {...(sliderParams as SwiperProps)}>
-        {list.map(({ id, title, icon, budget, currency }) => {
+        {list.map(({ id, title, icon, amount, currency, budget }) => {
           return (
             <SwiperSlide key={id}>
               <CategoryItem
                 title={title}
                 icon={icon}
-                budget={budget}
+                amount={amount}
                 currency={currency}
+                budget={budget}
               />
             </SwiperSlide>
           );

@@ -26,10 +26,7 @@ const AddAccount: FC<IProps> = ({ closeModal }) => {
 
   const validationSchema = yup.object().shape({
     name: yup.string().required(`Введіть назву категорії`),
-    budget: yup
-      .number()
-      .positive("Не можна вводити негативне число")
-      .required(`Введіть бюджет`),
+    budget: yup.number().typeError(`Введіть цифри`),
   });
 
   const validate = validateForm(validationSchema);
