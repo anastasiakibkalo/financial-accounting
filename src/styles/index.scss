@@ -73,3 +73,18 @@ path {
     background: $darkGray;
   }
 }
+
+.swiper-grid .swiper-slide {
+  margin-bottom: 20px;
+}
+
+*::-webkit-scrollbar {
+  background: $cream;
+  border-radius: 5px;
+  width: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: $darkCream;
+  border-radius: 5px;
+}

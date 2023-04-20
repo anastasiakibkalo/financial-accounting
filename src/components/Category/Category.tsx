@@ -3,6 +3,7 @@ import Modal from "components/Modal/Modal";
 import AddCategory from "components/AddCategory/AddCategory";
 import AddAccount from "components/AddAccount/AddAccount";
 import Slider from "./Slider/Slider";
+import cn from "classnames";
 
 import { IncomeList, BalanceList, ExpensesList } from "./config";
 
@@ -12,9 +13,10 @@ import PlusIcon from "images/icons/plus.svg";
 
 interface IProp {
   type: string;
+  style?: string;
 }
 
-const Category: FC<IProp> = ({ type }) => {
+const Category: FC<IProp> = ({ type, style }) => {
   const [isOpenAddCategory, setIsOpenAddCategory] = useState(false);
   const [isAcceptingList, setIsAcceptingList] = useState([]);
 
@@ -29,11 +31,12 @@ const Category: FC<IProp> = ({ type }) => {
   }, [type]);
 
   return (
-    <div className={styles.container}>
+    <div className={cn(styles.container, style && styles[style])}>
       <Slider
         list={isAcceptingList}
         setIsOpenAddCategory={setIsOpenAddCategory}
         type={type}
+        style={style}
       />
       {isOpenAddCategory && (
         <Modal closeModal={setIsOpenAddCategory}>

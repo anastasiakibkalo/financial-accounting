@@ -1,12 +1,13 @@
 import React, { FC, useMemo } from "react";
 import { Swiper, SwiperSlide, SwiperProps } from "swiper/react";
-import { Pagination } from "swiper";
+import { Grid, Pagination } from "swiper";
 import CategoryItem from "components/CategoryItem/CategoryItem";
 import SliderPagination from "components/SliderControllers/Pagination/Pagination";
 import AddCategory from "components/AddCategory/AddCategory";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/grid";
 
 import styles from "./slider.module.scss";
 
@@ -16,20 +17,25 @@ interface IProps {
   list: any;
   setIsOpenAddCategory: (bool: boolean) => void;
   type: string;
+  style?: string;
 }
 
-const Slider: FC<IProps> = ({ list, setIsOpenAddCategory, type }) => {
+const Slider: FC<IProps> = ({ list, setIsOpenAddCategory, type, style }) => {
   const sliderParams = useMemo(
     () => ({
       slidesPerView: 4,
       className: "category-swiper",
-      modules: [Pagination],
+      modules: [Grid, Pagination],
       pagination: {
         el: `.category-pagination.${type}`,
         clickable: true,
       },
+      grid: {
+        rows: type == "expenses" ? 4 : 1,
+        fill: "row",
+      },
     }),
-    []
+    [type]
   );
   return (
     <>
@@ -43,6 +49,7 @@ const Slider: FC<IProps> = ({ list, setIsOpenAddCategory, type }) => {
                 amount={amount}
                 currency={currency}
                 budget={budget}
+                style={style}
               />
             </SwiperSlide>
           );
@@ -53,6 +60,7 @@ const Slider: FC<IProps> = ({ list, setIsOpenAddCategory, type }) => {
             icon={<PlusIcon />}
             addCategory={true}
             setIsOpenAddCategory={setIsOpenAddCategory}
+            style={style}
           />
         </SwiperSlide>
       </Swiper>

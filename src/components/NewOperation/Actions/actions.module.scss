@@ -1,0 +1,41 @@
+@import "../../../styles/var";
+
+.list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item {
+  font-size: 15px;
+  line-height: 20px;
+  color: rgba($darkCream, 0.6);
+  width: 33.333%;
+  max-width: 200px;
+  padding: 10px 10px 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    max-width: 150px;
+    height: 3px;
+    transform: translateX(-50%);
+    background: transparent;
+    border-radius: 2px;
+    transition: all 0.25s ease-in;
+  }
+  &:hover {
+    color: $darkCream;
+  }
+  &.active {
+    color: $cream;
+    &:after {
+      background: $cream;
+    }
+  }
+}

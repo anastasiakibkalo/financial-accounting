@@ -7,6 +7,29 @@
   padding: 0 10px;
 }
 
+.light {
+  .icon {
+    background: $cream;
+    path {
+      stroke: $darkGray;
+    }
+  }
+  .amount,
+  .budget,
+  .title {
+    color: $cream;
+  }
+  &.addCategory {
+    .icon {
+      border: 2px dashed $cream;
+      path {
+        fill: $cream;
+        stroke: $cream;
+      }
+    }
+  }
+}
+
 .icon {
   width: 40px;
   height: 40px;
@@ -59,6 +82,7 @@
   line-height: 15px;
   text-align: center;
   margin-top: 3px;
+  opacity: 0.6;
 }
 
 .addCategory {

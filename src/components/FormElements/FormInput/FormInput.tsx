@@ -38,16 +38,19 @@ const FormInput: React.FC<IProps> = ({
   return (
     <div className={cn(styles.container, extClassName && styles[extClassName])}>
       <label htmlFor={placeholder} className={styles.label}>
-        <p
-          className={styles.title}
-          style={
-            secondaryColor && {
-              color: textColor,
+        {label && (
+          <p
+            className={styles.title}
+            style={
+              secondaryColor && {
+                color: textColor,
+              }
             }
-          }
-        >
-          {label}
-        </p>
+          >
+            {label}
+          </p>
+        )}
+
         <div className={styles.block}>
           <input
             {...input}
@@ -72,6 +75,14 @@ const FormInput: React.FC<IProps> = ({
             onClick={onClick}
             type={isShowPassword ? "text" : input.type}
             readOnly={readonly}
+            onKeyPress={
+              number &&
+              ((event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              })
+            }
           />
           {input.type === "password" && (
             <div

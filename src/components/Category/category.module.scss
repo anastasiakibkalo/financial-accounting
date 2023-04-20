@@ -19,6 +19,17 @@
   }
 }
 
+.light {
+  background: rgba($cream, 0.1);
+  max-width: 550px;
+  border-radius: 20px;
+  padding: 20px 10px;
+  margin-top: 15px;
+  &:after {
+    display: none;
+  }
+}
+
 .items {
   display: flex;
   justify-content: flex-start;

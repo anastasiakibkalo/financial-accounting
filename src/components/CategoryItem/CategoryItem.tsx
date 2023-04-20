@@ -11,6 +11,7 @@ interface IProps {
   currency?: string;
   addCategory?: boolean;
   setIsOpenAddCategory?: (bool: boolean) => void;
+  style?: string;
 }
 
 const CategoryItem: FC<IProps> = ({
@@ -21,6 +22,7 @@ const CategoryItem: FC<IProps> = ({
   currency,
   addCategory,
   setIsOpenAddCategory,
+  style,
 }) => {
   const [isAmountStatus, setIsAmountStatus] = useState("available");
 
@@ -53,7 +55,13 @@ const CategoryItem: FC<IProps> = ({
   }, [amount]);
 
   return (
-    <div className={cn(styles.container, addCategory && [styles.addCategory])}>
+    <div
+      className={cn(
+        styles.container,
+        addCategory && [styles.addCategory],
+        style && styles[style]
+      )}
+    >
       <div className={styles.title}>{title}</div>
       <div
         className={cn(styles.icon, budget && styles[isAmountStatus])}

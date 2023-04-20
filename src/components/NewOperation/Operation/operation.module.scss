@@ -1,0 +1,50 @@
+@import "../../../styles/var";
+
+.form {
+  opacity: 0;
+  transition: all 0.2s ease-in;
+}
+
+.show {
+  opacity: 1;
+}
+
+.item {
+  max-width: 400px;
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  .icon {
+    min-width: 35px;
+    width: 35px;
+    height: 35px;
+    padding: 10px;
+    border-radius: 50%;
+    margin-bottom: 19px;
+    margin-left: 10px;
+    background: $cream;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.25s ease-in;
+  }
+}
+
+.input {
+  width: 100%;
+}
+
+.subtitle {
+  color: $cream;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.button {
+  max-width: 200px;
+  margin: 20px auto 0;
+}
