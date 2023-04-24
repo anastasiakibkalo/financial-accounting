@@ -5,11 +5,13 @@ import { validateForm } from "../../../utils/validateForm";
 import FormInput from "components/FormElements/FormInput/FormInput";
 import Socials from "../Socials/Socials";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
-import axios from "../../../axios";
+import { useDispatch } from "react-redux";
+import { actions, saga, reducer } from "../export";
 
 import styles from "./login.module.scss";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [isForgotPassword, setIsForgotPassword] = useState(false);
 
   const validationSchema = yup.object().shape({
@@ -20,7 +22,8 @@ const Login = () => {
   const validate = validateForm(validationSchema);
 
   const onSubmit = useCallback((data, form) => {
-    axios.post("http://192.168.88.239:4444/auth/login", data);
+    console.log(data);
+    dispatch(actions.sendLoginRequest(data));
   }, []);
 
   return (
