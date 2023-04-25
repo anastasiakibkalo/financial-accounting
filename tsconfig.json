@@ -18,12 +18,18 @@
       "components/*": ["src/components/*"],
       "images/*": ["src/assets/images/*"],
       "styles/*": ["src/styles/*"],
-      "utils/*": ["src/utils/*"],
+      "utils": ["src/utils/"],
       "services": ["src/services"],
       "constant": ["src/constant"]
     },
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/features.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/features.js",
+    "src/utils/api/index.js"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,14 +1,13 @@
 import { takeLatest, select, call, put } from "redux-saga/effects";
 
 import * as API from "services";
-import requestMiddleware from "utils/requestMiddleware";
+import { requestMiddleware } from "utils";
 import { actionTypes, actions } from "./reducer";
 
 function* fetchUserLogin({ payload }) {
   const req = API.userLogin;
 
   const { lang } = payload;
-
   const { sendLoginSuccess: success, sendLoginError: error } = actions;
 
   yield requestMiddleware({
