@@ -1,13 +1,14 @@
 import { combineReducers } from "redux";
 import { all } from "redux-saga/effects";
 import { reducer, saga } from "components/Authorization/export";
+import { IAuthState } from "components/Authorization/reducer";
 
 interface IReducer {
-  user: any;
+  auth: IAuthState;
 }
 
 export const rootReducers = combineReducers<IReducer>({
-  user: reducer,
+  auth: reducer,
 });
 
 export const rootSagas = function* rootSaga() {

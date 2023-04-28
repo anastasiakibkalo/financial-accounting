@@ -6,7 +6,7 @@ import FormInput from "components/FormElements/FormInput/FormInput";
 import Socials from "../Socials/Socials";
 import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import { useDispatch } from "react-redux";
-import { actions, saga, reducer } from "../export";
+import { actions as loginActions } from "../export";
 
 import styles from "./login.module.scss";
 
@@ -23,7 +23,7 @@ const Login = () => {
 
   const onSubmit = useCallback((data, form) => {
     console.log(data);
-    dispatch(actions.sendLoginRequest(data));
+    dispatch(loginActions.sendLoginRequest(data));
   }, []);
 
   return (

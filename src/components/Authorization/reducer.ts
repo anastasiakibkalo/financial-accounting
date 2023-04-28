@@ -1,15 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface IMainState {
-  loading: boolean;
-  data: any;
+interface IUserData {
+  firstName: string;
+  secondName: string;
+  email: string;
+  token: string;
 }
 
-const initialState: IMainState = {
+export interface IAuthState {
+  loading: boolean;
+  errorLogin: boolean;
+  isLoggedIn: boolean;
+  errorMessage: string;
+  data: IUserData;
+}
+
+const initialUserData = {
+  firstName: "",
+  secondName: "",
+  email: "",
+  token: "",
+};
+
+const initialState: IAuthState = {
   loading: false,
-  data: {
-    isLoggedIn: false,
-  },
+  errorLogin: false,
+  isLoggedIn: false,
+  errorMessage: "",
+  data: initialUserData,
 };
 
 export const authSlice = createSlice({
@@ -17,15 +35,23 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     sendLoginRequest: (state) => {
-      state.data.loading = true;
+      state.loading = true;
     },
     sendLoginSuccess: (state, { payload }) => {
       state.data = payload;
-      state.data.loading = false;
+      state.isLoggedIn = true;
+      state.loading = false;
     },
-    sendLoginError: (state) => {
-      state.data = {};
-      state.data.loading = false;
+    sendLoginError: (state, { payload }) => {
+      state.data = initialState.data;
+      state.loading = false;
+      state.isLoggedIn = false;
+      state.errorLogin = true;
+      state.errorMessage = payload;
+    },
+    setAccessToken: (state, { payload }) => {
+      state.data.token = payload;
+      state.isLoggedIn = true;
     },
   },
 });
